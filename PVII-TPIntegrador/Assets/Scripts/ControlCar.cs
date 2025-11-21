@@ -18,7 +18,7 @@ public class ControlCar : MonoBehaviour
     {
         float velocidad = Input.GetAxis("Vertical");
         rig.AddForce(Vector2.up * velocidad * aceleracion * Time.deltaTime);
-        rig.velocity = Vector2.ClampMagnitude(rig.velocity, velocidadMaxima);
+        rig.linearVelocity = Vector2.ClampMagnitude(rig.linearVelocity, velocidadMaxima);
 
 
         float girar = Input.GetAxis("Horizontal");
