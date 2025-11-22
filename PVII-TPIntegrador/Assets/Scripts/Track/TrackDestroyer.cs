@@ -6,11 +6,10 @@ public class TrackDestroyer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("COLISIONÓ CON: " + other.name);
-
-
         if (other.CompareTag("Track"))
+        {
             Debug.Log("DEVOLVIENDO AL POOL: " + other.name);
             pool.ReturnSegment(other.gameObject);
+        }
     }
 }
