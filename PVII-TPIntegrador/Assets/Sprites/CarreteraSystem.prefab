@@ -61,4 +61,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrackPool
   prefabs:
   - {fileID: 8619019172378460228, guid: 08a99e56c4a446b42bcd375cc2b51083, type: 3}
-  poolSize: 10
+  poolSize: 8

@@ -147,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 36747577}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -9.1, z: 0}
+  m_LocalPosition: {x: 0, y: -44.1, z: 0}
   m_LocalScale: {x: 1.2544199, y: 1.2544199, z: 1.2544199}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -197,7 +197,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 11.54, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &36747580
 Rigidbody2D:
@@ -370,7 +370,7 @@ SpriteRenderer:
   m_SortingLayerID: -1565272697
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -2975446818815082692, guid: bb12a749c1166e047968c73df348eb36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -390,12 +390,13 @@ Transform:
   m_GameObject: {fileID: 1443924947}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.505, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -2.13, z: 0}
+  m_LocalScale: {x: 0.58457, y: 0.58457, z: 0.58457}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1538256599}
   - {fileID: 36747578}
+  - {fileID: 1865983937}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1443924952
@@ -436,7 +437,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 3.12, y: 6.48}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -505,7 +506,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.334765
+  orthographic size: 7.981154
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -536,6 +537,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1443924951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1865983936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1865983937}
+  - component: {fileID: 1865983938}
+  m_Layer: 0
+  m_Name: SpawnCars
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1865983937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865983936}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 14.18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1443924951}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1865983938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865983936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b4a7c25cff3f94e83f2ba2ec878020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarSpawner
+  normalCarPrefab: {fileID: 6874684418821813105, guid: c909437d7215f1a448a5628a421c655a, type: 3}
+  crazyCarPrefab: {fileID: 446174811530376926, guid: c1e7877e5fdb75a49be8359d99569827, type: 3}
 --- !u!1001 &3302667095437046204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -548,6 +595,18 @@ PrefabInstance:
       propertyPath: generator
       value: 
       objectReference: {fileID: 1075219758}
+    - target: {fileID: 917372412222059239, guid: 08a99e56c4a446b42bcd375cc2b51083, type: 3}
+      propertyPath: m_Size.y
+      value: 13.962622
+      objectReference: {fileID: 0}
+    - target: {fileID: 917372412222059239, guid: 08a99e56c4a446b42bcd375cc2b51083, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 917372412222059239, guid: 08a99e56c4a446b42bcd375cc2b51083, type: 3}
+      propertyPath: m_Offset.y
+      value: 3.378951
+      objectReference: {fileID: 0}
     - target: {fileID: 1676553915004205858, guid: 08a99e56c4a446b42bcd375cc2b51083, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -600,6 +659,14 @@ PrefabInstance:
       propertyPath: correccion.y
       value: 8.9
       objectReference: {fileID: 0}
+    - target: {fileID: 6574658877781572475, guid: 08a99e56c4a446b42bcd375cc2b51083, type: 3}
+      propertyPath: m_Size.y
+      value: 17.150671
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574658877781572475, guid: 08a99e56c4a446b42bcd375cc2b51083, type: 3}
+      propertyPath: m_Offset.y
+      value: 4.236554
+      objectReference: {fileID: 0}
     - target: {fileID: 8619019172378460228, guid: 08a99e56c4a446b42bcd375cc2b51083, type: 3}
       propertyPath: m_Name
       value: Controlcarretera
@@ -621,6 +688,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4143461778826934795, guid: e0b4262243c327f4a90057202d566aed, type: 3}
+      propertyPath: 'prefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8619019172378460228, guid: 08a99e56c4a446b42bcd375cc2b51083, type: 3}
+    - target: {fileID: 6734932099340682636, guid: e0b4262243c327f4a90057202d566aed, type: 3}
+      propertyPath: offset.y
+      value: 17.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7286110151857355188, guid: e0b4262243c327f4a90057202d566aed, type: 3}
       propertyPath: m_Name
       value: CarreteraSystem
