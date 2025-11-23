@@ -1,7 +1,8 @@
+using FishNet.Object;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class ControlCar : MonoBehaviour
+public class ControlCar : NetworkBehaviour
 {
     [SerializeField] private float aceleracion = 100f;
     [SerializeField] private float velocidadMaxima = 10f;
@@ -16,10 +17,11 @@ public class ControlCar : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!IsOwner) return;
+
         float velocidad = Input.GetAxis("Vertical");
         rig.AddForce(Vector2.up * velocidad * aceleracion * Time.deltaTime);
         rig.linearVelocity = Vector2.ClampMagnitude(rig.linearVelocity, velocidadMaxima);
-
 
         float girar = Input.GetAxis("Horizontal");
         transform.Translate(Vector2.right * girar * velocidadGiro * Time.deltaTime);
