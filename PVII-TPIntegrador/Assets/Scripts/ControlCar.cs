@@ -1,32 +1,43 @@
-using FishNet.Object;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class ControlCar : NetworkBehaviour
+public class ControlCar : MonoBehaviour
 {
-    [SerializeField] private float aceleracion = 100f;
-    [SerializeField] private float velocidadMaxima = 10f;
-    [SerializeField] private float velocidadGiro = 5f;
+    [SerializeField] private float aceleracion = 10f;
+    [SerializeField] private float velocidadMaxima = 8f;
+    [SerializeField] private float fuerzaGiro = 3f;
+    [SerializeField] private float agarre = 4f;
 
     private Rigidbody2D rig;
 
     private void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
+        rig.gravityScale = 0;
     }
 
     private void FixedUpdate()
     {
-        if (!IsOwner) return;
+        float inputAceleracion = Input.GetAxis("Vertical");
+        float inputGiro = Input.GetAxis("Horizontal");
 
-        float velocidad = Input.GetAxis("Vertical");
-        rig.AddForce(Vector2.up * velocidad * aceleracion * Time.deltaTime);
+        // --- Acelerar hacia adelante
+        rig.AddForce(transform.up * inputAceleracion * aceleracion);
+
+        // Limitar velocidad máxima
         rig.linearVelocity = Vector2.ClampMagnitude(rig.linearVelocity, velocidadMaxima);
 
-        float girar = Input.GetAxis("Horizontal");
-        transform.Translate(Vector2.right * girar * velocidadGiro * Time.deltaTime);
+        // --- Giro basado en velocidad 
+        float velocidadActual = rig.linearVelocity.magnitude;
+        float giro = inputGiro * fuerzaGiro * (velocidadActual / velocidadMaxima);
 
-        float clampedX = Mathf.Clamp(transform.position.x, -4f, 4f);
-        transform.position = new Vector2(clampedX, transform.position.y);
+        rig.MoveRotation(rig.rotation - giro);
+
+        // ---  (reduce el patinaje)
+        Vector2 velocidadLateral = Vector2.Dot(rig.linearVelocity, transform.right) * transform.right;
+        Vector2 velocidadAdelante = Vector2.Dot(rig.linearVelocity, transform.up) * transform.up;
+
+        // Reducir velocidad lateral para el giro
+        rig.linearVelocity = velocidadAdelante + velocidadLateral * (1f / agarre);
     }
 }
