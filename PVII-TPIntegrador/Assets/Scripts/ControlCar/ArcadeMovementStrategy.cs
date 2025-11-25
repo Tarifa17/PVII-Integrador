@@ -7,6 +7,10 @@ using UnityEngine;
 
 namespace Assets.Scripts.ControlCar
 {
+    /// <summary>
+    /// Estrategia de movimiento estilo arcade.
+    /// Controla aceleración, giro y agarre.
+    /// </summary>
     public class ArcadeMovementStrategy: IMovementStrategy
     {
         private float aceleracion;
@@ -16,6 +20,7 @@ namespace Assets.Scripts.ControlCar
 
         public ArcadeMovementStrategy(float acc, float vmax, float giro, float grip)
         {
+            //Datos compartidos para otras clases
             aceleracion = acc;
             velocidadMaxima = vmax;
             fuerzaGiro = giro;
@@ -26,7 +31,7 @@ namespace Assets.Scripts.ControlCar
         {
             Rigidbody2D rig = car.Rig;
 
-            // Acelerar
+            // Aceleraracion frontal
             rig.AddForce(car.transform.up * accelInput * aceleracion);
 
             // Limitar velocidad máxima
@@ -35,6 +40,8 @@ namespace Assets.Scripts.ControlCar
             // Giro dependiente de la velocidad
             float velocidadActual = rig.linearVelocity.magnitude;
             float giro = turnInput * fuerzaGiro * (velocidadActual / velocidadMaxima);
+
+            //Rotacion final
             rig.MoveRotation(rig.rotation - giro);
 
             // Reducción del patinaje (agarre)
