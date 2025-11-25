@@ -1,6 +1,7 @@
 using UnityEngine;
+using FishNet.Object;
 
-public class CarPathSetter : MonoBehaviour
+public class CarPathSetter : NetworkBehaviour
 {
     public Transform[] pathPoints;
     public GameObject car;

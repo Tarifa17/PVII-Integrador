@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5160897432669564426}
   - component: {fileID: 8748002940818419240}
   - component: {fileID: 3081074738274128682}
+  - component: {fileID: 8657195100010450237}
   m_Layer: 0
   m_Name: Carpista2
   m_TagString: Untagged
@@ -48,6 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d35b26d9967fb4d93e00cbbe003fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarController
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 5160897432669564426}
+  _networkObjectCache: {fileID: 5160897432669564426}
 --- !u!65 &5531130693893761497
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -88,6 +92,7 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
+  - {fileID: 7174891069566672485}
   - {fileID: 8748002940818419240}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
@@ -113,7 +118,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 4
+  <PrefabId>k__BackingField: 14
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 17251033021782799640
   <SceneId>k__BackingField: 0
@@ -134,10 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 0
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 5160897432669564426}
   _networkObjectCache: {fileID: 5160897432669564426}
-  _componentConfiguration: 0
+  _componentConfiguration: 3
   _synchronizeParent: 0
   _packing:
     Position: 1
@@ -212,8 +217,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1565272697
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 585640dcb2057cf41b521473c549147f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -226,3 +231,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8657195100010450237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446174811530376926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0202dab180b129044a3a392d43158ae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugVisibility
