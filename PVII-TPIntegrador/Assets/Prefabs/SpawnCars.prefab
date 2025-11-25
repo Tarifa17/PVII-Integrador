@@ -48,4 +48,5 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 0}
   _networkObjectCache: {fileID: 0}
   normalCarPrefab: {fileID: 6874684418821813105, guid: c909437d7215f1a448a5628a421c655a, type: 3}
-  crazyCarPrefab: {fileID: 446174811530376926, guid: c1e7877e5fdb75a49be8359d99569827, type: 3}
+  crazyCarPrefab: {fileID: 0}
+  pathPoints: []
