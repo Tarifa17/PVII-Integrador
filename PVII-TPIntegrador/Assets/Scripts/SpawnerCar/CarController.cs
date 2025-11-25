@@ -1,5 +1,7 @@
-using UnityEngine;
-public class CarController : MonoBehaviour
+﻿using UnityEngine;
+using FishNet.Object;
+
+public class CarController : NetworkBehaviour
 {
     private ICarBehavior behavior;
 
@@ -10,6 +12,9 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
+        // SOLO EL SERVIDOR mueve los coches
+        if (!IsServer) return;
+
         behavior?.Move(gameObject);
     }
 }
