@@ -6,20 +6,24 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.ControlCar
 {
-    public class TurnCommand
+    /// <summary>
+    /// Comando que representa la acción de girar.
+    /// Encapsula el input horizontal.
+    /// </summary>
+    public class TurnCommand: ICommand
     {
         private ContextCar car;
-        private float turn;
+        private float turnValue;
 
-        public TurnCommand(ContextCar car, float turnValue)
+        public TurnCommand(ContextCar car, float turn)
         {
-            car = car;
-            turn = turnValue;
+            this.car = car;
+            this.turnValue = turn;
         }
 
         public void Execute()
         {
-            car.ApplyMovement(0, turn);
+            car.ApplyTurn(turnValue);
         }
     }
 }

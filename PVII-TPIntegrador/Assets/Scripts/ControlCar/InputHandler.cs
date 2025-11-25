@@ -8,6 +8,10 @@ using FishNet.Object;
 
 namespace Assets.Scripts.ControlCar
 {
+    /// <summary>
+    /// Lee inputs del usuario y los convierte en Comandos.
+    /// Además asigna la Strategy al auto.
+    /// </summary>
     public class InputHandler : NetworkBehaviour
     {
         private CommandInvoker invoker;
@@ -24,10 +28,10 @@ namespace Assets.Scripts.ControlCar
 
             // Asignamos Strategy aquí
             car.MovementStrategy = new ArcadeMovementStrategy(
-                acc: 10f,
-                vmax: 8f,
-                giro: 3f,
-                grip: 4f
+                acc: 4f,
+                vmax: 7f,
+                giro: 2.5f,
+                grip: 6f
             );
         }
 
@@ -35,12 +39,13 @@ namespace Assets.Scripts.ControlCar
         {
             if (!IsOwner) return;
 
+            //Input del jugador
             float accel = Input.GetAxis("Vertical");
             float turn = Input.GetAxis("Horizontal");
 
-            // Creamos comando con ambos inputs
-            ICommand moveCommand = new AccelerateCommand(car, accel, turn);
-            invoker.AddCommand(moveCommand);
+            // Creamos comandos separados
+            invoker.AddCommand(new AccelerateCommand(car, accel));
+            invoker.AddCommand(new TurnCommand(car, turn));
 
             invoker.ExecuteCommands();
         }
