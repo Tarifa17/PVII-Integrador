@@ -7,14 +7,16 @@ public interface ICarFactory
 
 public class TimedCarFactory : ICarFactory
 {
-    public GameObject normalCarPrefab;
-    public GameObject crazyCarPrefab;
+    private GameObject normalCarPrefab;
+    private GameObject crazyCarPrefab;
+    private Transform[] pathPoints;
     private float startTime;
 
-    public TimedCarFactory(GameObject normal, GameObject crazy)
+    public TimedCarFactory(GameObject normal, GameObject crazy, Transform[] points)
     {
         normalCarPrefab = normal;
         crazyCarPrefab = crazy;
+        pathPoints = points;
         startTime = Time.time;
     }
 
@@ -23,17 +25,24 @@ public class TimedCarFactory : ICarFactory
         float elapsed = Time.time - startTime;
         GameObject car;
 
-        if (elapsed < 10f)
+        if (elapsed < 2f)
         {
             car = Object.Instantiate(normalCarPrefab, position, Quaternion.identity);
-            car.GetComponent<CarController>().SetBehavior(new NormalCarBehavior());
+            var behavior = new NormalCarBehavior();
+            behavior.SetPath(pathPoints, 5.4f);
+            car.GetComponent<CarController>().SetBehavior(behavior);
         }
         else
         {
             car = Object.Instantiate(crazyCarPrefab, position, Quaternion.identity);
-            car.GetComponent<CarController>().SetBehavior(new CrazyCarBehavior());
+            var behavior = new CrazyCarBehavior();
+            behavior.SetPath(pathPoints, 5.4f); // si Crazy también sigue puntos
+            car.GetComponent<CarController>().SetBehavior(behavior);
         }
 
         return car;
     }
 }
+
+
+

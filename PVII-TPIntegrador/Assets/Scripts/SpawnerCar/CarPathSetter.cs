@@ -10,7 +10,7 @@ public class CarPathSetter : MonoBehaviour
     private void Start()
     {
         normalBehavior = new NormalCarBehavior();
-        normalBehavior.SetPath(pathPoints, 2.4f); // velocidad fija
+        normalBehavior.SetPath(pathPoints, 5.4f); // velocidad fija
 
         // Asignar comportamiento al auto
         car.GetComponent<CarController>().SetBehavior(normalBehavior);
