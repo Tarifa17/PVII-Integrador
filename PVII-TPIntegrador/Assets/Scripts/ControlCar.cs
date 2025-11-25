@@ -1,7 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class ControlCar : MonoBehaviour
+public class ControlCar : NetworkBehaviour
 {
     [SerializeField] private float aceleracion = 10f;
     [SerializeField] private float velocidadMaxima = 8f;
@@ -18,13 +20,18 @@ public class ControlCar : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // --- MUY IMPORTANTE ---
+        // Si este objeto NO pertenece al cliente local, no debe ejecutar inputs.
+        if (!IsOwner)
+            return;
+
         float inputAceleracion = Input.GetAxis("Vertical");
         float inputGiro = Input.GetAxis("Horizontal");
 
         // --- Acelerar hacia adelante
         rig.AddForce(transform.up * inputAceleracion * aceleracion);
 
-        // Limitar velocidad m�xima
+        // Limitar velocidad máxima
         rig.linearVelocity = Vector2.ClampMagnitude(rig.linearVelocity, velocidadMaxima);
 
         // --- Giro basado en velocidad 
