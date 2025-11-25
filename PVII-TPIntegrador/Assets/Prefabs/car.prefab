@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 3270582125076037829}
   - component: {fileID: 1594736422496878514}
   - component: {fileID: 220917859777205072}
-  - component: {fileID: 7464544509586567361}
   - component: {fileID: 4230578255417428311}
   - component: {fileID: -2774092883921169473}
   - component: {fileID: 1078346706752957740}
+  - component: {fileID: 5429304340433624130}
+  - component: {fileID: 9112238967195498555}
   m_Layer: 0
   m_Name: car
   m_TagString: Player
@@ -122,25 +123,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7464544509586567361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7986757199134740211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e863b1a6de2ae2d4f82d814b1e2f7c1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ControlCar
-  _componentIndexCache: 255
-  _addedNetworkObject: {fileID: -2774092883921169473}
-  _networkObjectCache: {fileID: 0}
-  aceleracion: 2
-  velocidadMaxima: 3
-  fuerzaGiro: 3
-  agarre: 4
 --- !u!61 &4230578255417428311
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -287,3 +269,30 @@ MonoBehaviour:
     X: 0
     Y: 0
     Z: 0
+--- !u!114 &5429304340433624130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7986757199134740211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5069ea904e269b945a5170a65ddf88a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ContextCar
+--- !u!114 &9112238967195498555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7986757199134740211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83eb50a4fd6789f42b5e134adeaf7eca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.ControlCar.InputHandler
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: -2774092883921169473}
+  _networkObjectCache: {fileID: 0}

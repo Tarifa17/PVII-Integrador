@@ -7,7 +7,7 @@ public class NormalCarBehavior : ICarBehavior
     private float t = 0f;
     private int currentIndex = 0;
 
-    private const int samples = 50; // precisión del calculo de distancia
+    private const int samples = 50; // precisiï¿½n del calculo de distancia
 
     public void SetPath(Transform[] points, float moveSpeed = 3f)
     {
@@ -22,7 +22,7 @@ public class NormalCarBehavior : ICarBehavior
         if (pathPoints == null || pathPoints.Length < 4)
             return;
 
-        // --- Aumentamos t pero según distancia real ---
+        // --- Aumentamos t pero segï¿½n distancia real ---
         t = MoveAlongCurve(t, speed * Time.deltaTime);
 
         if (t >= 1f)
@@ -31,13 +31,13 @@ public class NormalCarBehavior : ICarBehavior
             currentIndex = (currentIndex + 1) % pathPoints.Length;
         }
 
-        // Obtener índices seguros
+        // Obtener ï¿½ndices seguros
         int p0 = (currentIndex - 1 + pathPoints.Length) % pathPoints.Length;
         int p1 = currentIndex;
         int p2 = (currentIndex + 1) % pathPoints.Length;
         int p3 = (currentIndex + 2) % pathPoints.Length;
 
-        // Posición real
+        // Posiciï¿½n real
         Vector3 pos = CatmullRom(pathPoints[p0].position,
                                  pathPoints[p1].position,
                                  pathPoints[p2].position,
@@ -46,7 +46,7 @@ public class NormalCarBehavior : ICarBehavior
 
         car.transform.position = pos;
 
-        // Rotación (mirar hacia adelante)
+        // Rotaciï¿½n (mirar hacia adelante)
         Vector3 futurePos = CatmullRom(pathPoints[p0].position,
                                        pathPoints[p1].position,
                                        pathPoints[p2].position,
