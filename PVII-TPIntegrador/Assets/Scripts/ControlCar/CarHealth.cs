@@ -39,7 +39,9 @@ public class CarHealth : NetworkBehaviour
 
             if (currentLives <= 0)
             {
+                ExplosionPool.Instance.GetExplosion(transform.position);
                 Debug.Log("Auto destruido");
+                gameObject.SetActive(false);
                 // Podés desactivar el coche, mostrar UI, respawn, etc.
             }
         }
