@@ -4,7 +4,7 @@ using FishNet.Object;
 public class CarPathSetter : NetworkBehaviour
 {
     public Transform[] pathPoints;
-    public GameObject car;
+ //   public GameObject car;
 
     private NormalCarBehavior normalBehavior;
 
@@ -14,6 +14,6 @@ public class CarPathSetter : NetworkBehaviour
         normalBehavior.SetPath(pathPoints, 5.4f); // velocidad fija
 
         // Asignar comportamiento al auto
-        car.GetComponent<CarController>().SetBehavior(normalBehavior);
+       // car.GetComponent<CarController>().SetBehavior(normalBehavior);
     }
 }

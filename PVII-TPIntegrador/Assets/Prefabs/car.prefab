@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1078346706752957740}
   - component: {fileID: 5429304340433624130}
   - component: {fileID: 9112238967195498555}
+  - component: {fileID: 1010552834980929261}
   m_Layer: 0
   m_Name: car
   m_TagString: Player
@@ -296,3 +297,20 @@ MonoBehaviour:
   _componentIndexCache: 255
   _addedNetworkObject: {fileID: -2774092883921169473}
   _networkObjectCache: {fileID: 0}
+--- !u!114 &1010552834980929261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7986757199134740211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d527379cde4639e4d8e7b51ed4fac5f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarHealth
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: -2774092883921169473}
+  _networkObjectCache: {fileID: 0}
+  maxLives: 3
+  livesText: {fileID: 0}

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Destructor
   - Track
+  - Midpoint
+  - StartLine
+  - Obstaculo
   layers:
   - Default
   - TransparentFX
