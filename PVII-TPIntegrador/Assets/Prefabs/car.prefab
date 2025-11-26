@@ -134,7 +134,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6f7ac3bc46c01084087ee71bdf04ee5c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -189,8 +189,9 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1078346706752957740}
+  - {fileID: 9112238967195498555}
+  - {fileID: 1010552834980929261}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -222,7 +223,7 @@ MonoBehaviour:
   SerializedTransformProperties:
     Position: {x: 0, y: -2.13, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
-    Scale: {x: 0.58457, y: 0.58457, z: 0.58457}
+    Scale: {x: 0.16660674, y: 0.16660674, z: 0.16660674}
     IsValid: 1
 --- !u!114 &1078346706752957740
 MonoBehaviour:
@@ -236,9 +237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Transforming.NetworkTransform
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: -2774092883921169473}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: -2774092883921169473}
   _componentConfiguration: 3
   _synchronizeParent: 0
   _packing:
@@ -294,9 +295,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83eb50a4fd6789f42b5e134adeaf7eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.ControlCar.InputHandler
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: -2774092883921169473}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: -2774092883921169473}
 --- !u!114 &1010552834980929261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,8 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d527379cde4639e4d8e7b51ed4fac5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarHealth
-  _componentIndexCache: 255
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: -2774092883921169473}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: -2774092883921169473}
   maxLives: 3
-  livesText: {fileID: 0}

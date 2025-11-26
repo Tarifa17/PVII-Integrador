@@ -9,6 +9,7 @@ public class LapTracker : MonoBehaviour
     private int currentLap = 0;
     private bool lapCycleActive = false;
     private bool passedMidpoint = false;
+    private bool raceFinished = false;
 
     private void Start()
     {
@@ -17,6 +18,8 @@ public class LapTracker : MonoBehaviour
 
     public void OnStartLineEntered()
     {
+        if (raceFinished) return;
+
         if (passedMidpoint)
         {
             currentLap++;
@@ -26,7 +29,9 @@ public class LapTracker : MonoBehaviour
 
             if (currentLap >= totalLaps)
             {
+                raceFinished = true;
                 Debug.Log("Carrera terminada");
+                // Podés agregar lógica de UI, escena, etc.
             }
         }
 
@@ -36,6 +41,8 @@ public class LapTracker : MonoBehaviour
 
     public void OnMidpointEntered()
     {
+        if (raceFinished) return;
+
         if (lapCycleActive)
         {
             passedMidpoint = true;
