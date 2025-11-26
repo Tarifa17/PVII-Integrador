@@ -17,6 +17,8 @@ namespace Assets.Scripts.ControlCar
         private CommandInvoker invoker;
         private ContextCar car;
 
+        // Diccionario que mapea un input a una función creadora de comandos
+        private Dictionary<string, Func<ICommand>> commandMap;
         private void Awake()
         {
             invoker = new CommandInvoker();
@@ -33,21 +35,39 @@ namespace Assets.Scripts.ControlCar
                 giro: 2.5f,
                 grip: 6f
             );
+
+            // Configuramos el diccionario
+            commandMap = new Dictionary<string, Func<ICommand>>()
+            {
+                { "Vertical", () => new AccelerateCommand(car, Input.GetAxis("Vertical")) },
+                { "Horizontal", () => new TurnCommand(car, Input.GetAxis("Horizontal")) }
+            };
         }
 
         private void FixedUpdate()
         {
             if (!IsOwner) return;
 
-            //Input del jugador
-            float accel = Input.GetAxis("Vertical");
-            float turn = Input.GetAxis("Horizontal");
-
-            // Creamos comandos separados
-            invoker.AddCommand(new AccelerateCommand(car, accel));
-            invoker.AddCommand(new TurnCommand(car, turn));
-
+            DetectInputs();
             invoker.ExecuteCommands();
+        }
+
+        /// <summary>
+        /// Recorre el diccionario y genera comandos según el input leído.
+        /// </summary>
+        private void DetectInputs()
+        {
+            foreach (var entry in commandMap)
+            {
+                float inputValue = Input.GetAxis(entry.Key);
+
+                // Evitamos crear comandos si no hay input
+                if (Mathf.Abs(inputValue) > 0.01f)
+                {
+                    ICommand cmd = entry.Value.Invoke(); // se crea el comando
+                    invoker.AddCommand(cmd); // se encola
+                }
+            }
         }
     }
 }
