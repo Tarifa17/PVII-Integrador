@@ -3,24 +3,30 @@ using UnityEngine;
 public class CrazyCarBehavior : ICarBehavior
 {
     private Transform[] pathPoints;
-    private float baseSpeed = 3f;
+
+    private float normalSpeed = 3f;
     private float t = 0f;
     private int currentIndex = 0;
-    private float startTime;
-    private float accelerationDuration = 2f;
+
+    // Boost
+    private float boostMultiplier = 1.8f;
+    private float boostDuration = 1.2f;
+    private float boostCooldown = 3f;
+
+    private float boostEndTime = 0f;
+    private float nextBoostTime = 0f;
 
     private const int samples = 50;
-
-    private float zigzagAmplitude = 0.15f;
-    private float zigzagFrequency = 6f;
 
     public void SetPath(Transform[] points, float moveSpeed = 3f)
     {
         pathPoints = points;
-        baseSpeed = moveSpeed;
-        currentIndex = 0;
+        normalSpeed = moveSpeed;
+
         t = 0f;
-        startTime = Time.time;
+        currentIndex = 0;
+
+        nextBoostTime = Time.time + Random.Range(1f, boostCooldown);
     }
 
     public void Move(GameObject car)
@@ -28,10 +34,24 @@ public class CrazyCarBehavior : ICarBehavior
         if (pathPoints == null || pathPoints.Length < 4)
             return;
 
-        float elapsed = Time.time - startTime;
-        float dynamicSpeed = Mathf.SmoothStep(1.5f, baseSpeed, elapsed / accelerationDuration);
+        // ============================================
+        // BOOST, PERO SIN AFECTAR LA ROTACIÓN
+        // ============================================
+        float currentSpeed = normalSpeed;
 
-        t = MoveAlongCurve(t, dynamicSpeed * Time.deltaTime);
+        if (Time.time >= nextBoostTime)
+        {
+            boostEndTime = Time.time + boostDuration;
+            nextBoostTime = Time.time + boostCooldown + Random.Range(0.2f, 1f);
+        }
+
+        if (Time.time < boostEndTime)
+            currentSpeed *= boostMultiplier;
+
+        // ============================================
+        // MISMO MOVIMIENTO EXACTO QUE EL NORMAL
+        // ============================================
+        t = MoveAlongCurve(t, currentSpeed * Time.deltaTime);
 
         if (t >= 1f)
         {
@@ -50,29 +70,24 @@ public class CrazyCarBehavior : ICarBehavior
                                  pathPoints[p3].position,
                                  t);
 
+        car.transform.position = pos;
+
+        // ============================================
+        // MISMA ROTACIÓN QUE EL NORMAL (SIN SUAVIZADO)
+        // ============================================
         Vector3 futurePos = CatmullRom(pathPoints[p0].position,
                                        pathPoints[p1].position,
                                        pathPoints[p2].position,
                                        pathPoints[p3].position,
                                        Mathf.Clamp01(t + 0.02f));
 
-        // Zigzag vertical solo entre punto2→punto3 y punto5→punto6
-        if ((p1 == 1 && p2 == 2) || (p1 == 4 && p2 == 5))
-        {
-            float offsetY = Mathf.Sin(Time.time * zigzagFrequency) * zigzagAmplitude;
-            float fade = Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(0.1f, 0.9f, t));
-            pos.y += offsetY * fade;
-        }
-
-        car.transform.position = pos;
-
         Vector2 dir = futurePos - pos;
-        float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
-        float currentAngle = car.transform.rotation.eulerAngles.z;
-        float smoothAngle = Mathf.LerpAngle(currentAngle, targetAngle, Time.deltaTime * 8f);
-        car.transform.rotation = Quaternion.Euler(0f, 0f, smoothAngle);
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+
+        car.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
+    // ====== MOVE ALONG CURVE ======
     private float MoveAlongCurve(float t, float distance)
     {
         float step = 1f / samples;
@@ -102,7 +117,7 @@ public class CrazyCarBehavior : ICarBehavior
             }
             else
             {
-                float pct = (d > Mathf.Epsilon) ? distance / d : 0f;
+                float pct = distance / d;
                 return Mathf.Lerp(t1, t2, pct);
             }
         }

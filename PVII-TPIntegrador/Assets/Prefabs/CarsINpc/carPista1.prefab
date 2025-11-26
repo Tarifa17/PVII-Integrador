@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5087000390743894798}
   m_Layer: 0
   m_Name: carPista1
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,8 +270,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1774411153
-  m_SortingLayer: 2
+  m_SortingLayerID: -1565272697
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 74b8ca743f8241f4e9f5adec990ac84b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
