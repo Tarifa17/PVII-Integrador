@@ -30,4 +30,9 @@ public class LevelSelector : MonoBehaviour
             });
         }
     }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }
